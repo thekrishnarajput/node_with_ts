@@ -1,0 +1,19 @@
+{
+  "name": "node_with_ts",
+  "version": "1.0.0",
+  "description": "Node.js using typescript\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[D\u001b[D\u001b[D\u001b[D APIs using typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thekrishnarajput/node_with_ts.git"
+  },
+  "author": "Mukesh Karn (Krishna)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thekrishnarajput/node_with_ts/issues"
+  },
+  "homepage": "https://github.com/thekrishnarajput/node_with_ts#readme"
+}
