@@ -3,9 +3,16 @@ import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+
+import { itemRouter } from "./items/items.routes";
+
+import { errorHandler } from "./middleware/error.middleware";
+
+import { notFoundHandler } from "./middleware/not-found.middleware";
+
 /* Configure dotenv file */
 dotenv.config();
-let host:string = "127.0.0.1"
+let host: string = "127.0.0.1"
 /* App Variables */
 
 if (!process.env.PORT) {
@@ -26,6 +33,14 @@ app.use(cors());
 
 // express.json() parses JSON data in request bodies
 app.use(express.json());
+
+app.use('/api/menu/items', itemRouter);
+
+// Error handler
+app.use(errorHandler);
+
+// Not found handler
+// app.use(notFoundHandler);
 
 /* Server Activation */
 

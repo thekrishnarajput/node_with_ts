@@ -31,9 +31,14 @@ let items: Items = {
 
 /* Service Methods */
 
-export const findAll = async (): Promise<Item[]> => Object.values(items);
+export const findAll = async (): Promise<Item[]> => {
+    return Object.values(items)
+};
 
-export const find = async (id: number): Promise<Item> => items[id];
+export const find = async (id: number): Promise<Item> => {
+
+    return items[id];
+};
 
 export const create = async (newItem: BaseItem): Promise<Item> => {
     const id = new Date().valueOf();
@@ -45,20 +50,23 @@ export const create = async (newItem: BaseItem): Promise<Item> => {
     return items[id];
 }
 
-export const update = async (id: number, itemUpdate: BaseItem): Promise<Item | null> => {
+export const update = async (itemUpdate: Item): Promise<Item | null> => {
+
+    let id: number = itemUpdate.id;
     const itemResult = await find(id);
 
     if (!itemResult) {
         return null;
     }
 
-    items[id] = { id, ...itemUpdate };
+    items[id] = itemUpdate;
 
     return items[id];
 }
 
 export const deleteItem = async (id: number): Promise<null | void> => {
-    const itemResult = find(id);
+    const itemResult = await find(id);
+
     if (!itemResult) {
         return null;
     }
