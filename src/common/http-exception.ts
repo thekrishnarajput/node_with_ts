@@ -1,10 +1,10 @@
-export default class HttpException extends Error {
+export default class ErrData extends Error {
     statusCode?: number;
-    status?: number;
+    status?: boolean;
     message: string;
     error: string | null;
 
-    constructor(statusCode: number, status: number, message: string, error?: string) {
+    constructor(statusCode: number, status: boolean, message: string, error?: string) {
         super(message);
 
         this.statusCode = statusCode;
