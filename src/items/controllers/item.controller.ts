@@ -53,7 +53,6 @@ export const findItemController = async (req: Request, res: Response) => {
 export const updateItemController = async (req: Request, res: Response) => {
     try {
         let reqBody = req.body;
-        let id: string = (reqBody.id + "");
 
         const updateResult = await ItemServiceModel.updateItem(reqBody);
         if (!updateResult) {

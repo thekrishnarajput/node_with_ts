@@ -8,9 +8,12 @@ import { itemRouter } from "./items/routes/items.routes";
 
 import { errorHandler } from "./middleware/error.middleware";
 
+import { adminAutoCreate } from "./admin/controllers/admin.controller";
+
 // import { notFoundHandler } from "./middleware/not-found.middleware";
 
 import connectDB from "./db";
+import { adminRouter } from "./admin/routes/admin.routes";
 
 /* Configure dotenv file */
 dotenv.config();
@@ -47,7 +50,11 @@ app.use(express.json());
 // Connect to DB
 connectDB();
 
+// Item router
 app.use('/api/menu/items', itemRouter);
+
+// Admin router
+app.use('/api/admin', adminRouter)
 
 // Error handler
 app.use(errorHandler);
@@ -59,4 +66,5 @@ app.use(notFoundHandler);
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${host}:${PORT}`);
+    adminAutoCreate();
 });
