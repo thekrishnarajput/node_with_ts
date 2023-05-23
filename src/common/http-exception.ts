@@ -1,15 +1,8 @@
-export default class ErrData extends Error {
-    statusCode?: number;
-    status?: boolean;
-    message: string;
-    error: string | null;
-
-    constructor(statusCode: number, status: boolean, message: string, error?: string) {
-        super(message);
-
-        this.statusCode = statusCode;
-        this.status = status;
-        this.message = message;
-        this.error = error || null;
-    }
+export let ErrData = (statusCode: number, message: string, data: any) => {
+    let error: any = new Error();
+    error.statusCode = statusCode;
+    error.data = data;
+    error.message = message;
+    console.log("error:-", error);
+    return error;
 }

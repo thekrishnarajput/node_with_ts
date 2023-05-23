@@ -1,8 +1,8 @@
 /* Required External Modules and Interfaces */
 
 import express from "express";
-import { createController, deleteItemController, findAllItemController, findItemController, updateItemController } from "../controllers/item.controller";
-
+import { createItemController, deleteItemController, findAllItemController, findItemController, updateItemController } from "../controllers/item.controller";
+import { auth } from "../../middleware/token.middleware";
 /* Router Definition */
 
 export const itemRouter = express.Router();
@@ -10,16 +10,16 @@ export const itemRouter = express.Router();
 /* Controller Definitions */
 
 // To get all the items list
-itemRouter.get('/item-list', findAllItemController);
+itemRouter.get('/item-list', auth, findAllItemController);
 
 // To get selected item details
-itemRouter.get('/find-item', findItemController);
+itemRouter.get('/find-item', auth, findItemController);
 
 // To save new items
-itemRouter.post('/save', createController);
+itemRouter.post('/save', auth, createItemController);
 
 // To update item
-itemRouter.post('/update-item', updateItemController);
+itemRouter.post('/update-item', auth, updateItemController);
 
 // To delete item
-itemRouter.post('/delete', deleteItemController);
+itemRouter.post('/delete', auth, deleteItemController);

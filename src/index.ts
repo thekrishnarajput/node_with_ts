@@ -1,12 +1,14 @@
 /* Required External Modules */
 import * as dotenv from "dotenv";
+/* Configure dotenv file */
+dotenv.config();
+
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import helmet from "helmet";
 
 import { itemRouter } from "./items/routes/items.routes";
 
-import { errorHandler } from "./middleware/error.middleware";
 
 import { adminAutoCreate } from "./admin/controllers/admin.controller";
 
@@ -15,8 +17,6 @@ import { adminAutoCreate } from "./admin/controllers/admin.controller";
 import connectDB from "./db";
 import { adminRouter } from "./admin/routes/admin.routes";
 
-/* Configure dotenv file */
-dotenv.config();
 let host: string = "127.0.0.1"
 /* App Variables */
 
@@ -55,9 +55,6 @@ app.use('/api/menu/items', itemRouter);
 
 // Admin router
 app.use('/api/admin', adminRouter)
-
-// Error handler
-app.use(errorHandler);
 
 // Not found handler
 app.use(notFoundHandler);

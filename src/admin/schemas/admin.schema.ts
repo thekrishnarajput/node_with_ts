@@ -3,7 +3,7 @@ import mongoose, { Schema, Document } from "mongoose";
 /* Define interface */
 
 export interface AdminInterface extends Document {
-    name: string;
+    full_name: string;
     email: string;
     mobile_number: number;
     password: string;
@@ -12,7 +12,7 @@ export interface AdminInterface extends Document {
 }
 
 const adminSchema = new Schema<AdminInterface>({
-    name: {
+    full_name: {
         type: String,
         required: true,
         trim: true,
