@@ -10,9 +10,9 @@ This is a node.js basic API project using typescript.
 # Install Project Dependencies
 ````Your Node.js project requires a couple of dependencies to create a secure Express server with TypeScript. Install them like so:````
 
-```npm install express body-parser ts-node typescript -s```
+```npm i express body-parser ts-node typescript```
 
-```npm i express dotenv cors helmet```
+```npm i dotenv cors helmet```
 
 ````To use TypeScript effectively, you need to install type definitions for the packages you installed previously:````
 
