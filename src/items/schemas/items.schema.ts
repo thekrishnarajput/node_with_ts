@@ -1,13 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { ItemInterface } from "../interfaces/itemCommon.interface";
 
-/* Define interface */
-
-export interface ItemInterface extends Document {
-    name: string;
-    price: number;
-    description: string;
-    image: string;
-}
 
 const itemSchema = new Schema<ItemInterface>({
     name: {

@@ -1,10 +1,10 @@
-import { ItemInterface } from "../schemas/items.schema";
+import { ItemInterface } from "../interfaces/itemCommon.interface";
 import { NextFunction, Response } from 'express';
-import ItemServiceModel from "../models/items.serviceModel";
-import { ErrData } from "../../common/http-exception";
-import { messages, response } from "../../middleware/util.middleware";
-import { TypeInterface as Request, toStrings } from "../../common/types.interface";
-import { Enum } from "../../common/enum";
+import ItemModel from "../models/items.model";
+import { ErrData } from "../../utils/common/http-exception";
+import { messages, response } from "../../utils/middleware/util.middleware"
+import { TypeInterface as Request, toStrings } from "../../utils/common/types.interface";
+import { Enum } from "../../utils/common/enum";
 
 // Create item method
 export const createItemController = async (req: Request, res: Response, next: NextFunction) => {
@@ -12,7 +12,7 @@ export const createItemController = async (req: Request, res: Response, next: Ne
         if (req.user.role !== Enum.adminRoleId)
             throw ErrData(400, messages.notAuthorized(), false);
         let Body: ItemInterface = req.body;
-        const result = await ItemServiceModel.createItem(Body);
+        const result = await ItemModel.createItem(Body);
         if (!result)
             throw ErrData(400, messages.itemNotSaved(), false);
         return response(res, 200, true, "Item added successfully!", result);
@@ -26,7 +26,7 @@ export const createItemController = async (req: Request, res: Response, next: Ne
 // Find all item list
 export const findAllItemController = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const items = await ItemServiceModel.findAll();
+        const items = await ItemModel.findAll();
         return response(res, 200, true, "Data found!", items);
     }
     catch (error) {
@@ -39,7 +39,7 @@ export const findAllItemController = async (req: Request, res: Response, next: N
 export const findItemController = async (req: Request, res: Response, next: NextFunction) => {
     try {
         let id: string = (req.query.id + "");
-        const item = await ItemServiceModel.findItem(id);
+        const item = await ItemModel.findItem(id);
         if (!item) {
             throw ErrData(400, "No data found!", false);
         }
@@ -57,7 +57,7 @@ export const updateItemController = async (req: Request, res: Response, next: Ne
         if (req.user.role !== Enum.adminRoleId)
             throw ErrData(400, "You are not authorized to perform this action!", false);
         let Body = req.body;
-        const updateResult = await ItemServiceModel.updateItem(Body);
+        const updateResult = await ItemModel.updateItem(Body);
         if (!updateResult) {
             throw ErrData(400, "Item could not be updated!", false);
         }
@@ -76,7 +76,7 @@ export const deleteItemController = async (req: Request, res: Response, next: Ne
             throw ErrData(400, "You are not authorized to perform this action!", false);
 
         let id: string = toStrings(req.query.id + "");
-        let deleteResult = await ItemServiceModel.deleteItem(id);
+        let deleteResult = await ItemModel.deleteItem(id);
         if (!deleteResult) {
             throw ErrData(400, "Item could not be deleted!", false);
         }

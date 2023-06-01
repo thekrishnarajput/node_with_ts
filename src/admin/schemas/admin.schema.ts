@@ -1,48 +1,36 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { AdminInterface } from "../interfaces/adminCommon.interface";
+import { Enum } from "../../utils/common/enum";
 
-/* Define interface */
-
-export interface AdminInterface extends Document {
-    full_name: string;
-    email: string;
-    mobile_number: number;
-    password: string;
-    status: number;
-    role: number;
-}
 
 const adminSchema = new Schema<AdminInterface>({
     full_name: {
         type: String,
         required: true,
         trim: true,
-        minlength: 1,
     },
     email: {
         type: String,
         required: true,
         trim: true,
-        minlength: 1,
     },
     mobile_number: {
         type: Number,
         required: true,
-        minlength: 1,
     },
     password: {
         type: String,
         required: true,
-        minlength: 1,
     },
     status: {
         type: Number,
         required: true,
-        default: 1,
+        default: Enum.activeStatus,
     },
     role: {
         type: Number,
         required: true,
-        default: 1,
+        default: Enum.adminRoleId,
     },
 }, { timestamps: true });
 

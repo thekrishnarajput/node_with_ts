@@ -9,13 +9,11 @@ import helmet from "helmet";
 
 import { itemRouter } from "./items/routes/items.routes";
 
-
 import { adminAutoCreate } from "./admin/controllers/admin.controller";
 
-// import { notFoundHandler } from "./middleware/not-found.middleware";
-
-import connectDB from "./db";
+import { connectDB } from "./db";
 import { adminRouter } from "./admin/routes/admin.routes";
+import { userRouter } from "./user/routes/user.routes";
 
 let host: string = "127.0.0.1"
 /* App Variables */
@@ -54,7 +52,10 @@ connectDB();
 app.use('/api/menu/items', itemRouter);
 
 // Admin router
-app.use('/api/admin', adminRouter)
+app.use('/api/admin', adminRouter);
+
+// User router
+app.use('/users', userRouter);
 
 // Not found handler
 app.use(notFoundHandler);

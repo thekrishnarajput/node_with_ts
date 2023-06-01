@@ -9,6 +9,16 @@ export enum Enum {
     deletedStatus = 3,
     blockedStatus = 5,
 
+    // Order status
+    orderPending = 1,
+    orderApproved = 2,
+    orderProcessing = 3,
+    orderDelivered = 4,
+    orderCancelled = 5,
+    orderReturned = 6,
+
+
+    /* HTTP Status Codes */
     // Informational 1xx
     continue = 100,
     switchingProtocols = 101,
