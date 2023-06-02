@@ -2,7 +2,7 @@
 
 import express from "express";
 import { createItemController, deleteItemController, findAllItemController, findItemController, updateItemController } from "../controllers/item.controller";
-import { auth } from "../../middleware/token.middleware";
+import { auth } from "../../utils/middleware/token.middleware";
 /* Router Definition */
 
 export const itemRouter = express.Router();

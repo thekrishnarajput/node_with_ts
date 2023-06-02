@@ -16,6 +16,11 @@ const userSchema = new Schema<UserInterface>({
         unique: true,
         trim: true
     },
+    mobile_number: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
     password: {
         type: String,
         required: true,
@@ -55,18 +60,18 @@ const userSchema = new Schema<UserInterface>({
             required: true,
         },
     },
-    orders: [{
-        order_id: String,
-        order_date: Date,
-        order_status: Number,
-        order_total: Number,
-        order_items: [{
-            item_id: String,
-            item_name: String,
-            item_price: Number,
-            item_quantity: Number,
-        }]
-    }]
+    // orders: [{
+    //     order_id: String,
+    //     order_date: Date,
+    //     order_status: Number,
+    //     order_total: Number,
+    //     order_items: [{
+    //         item_id: String,
+    //         item_name: String,
+    //         item_price: Number,
+    //         item_quantity: Number,
+    //     }]
+    // }]
 }, { timestamps: true });
 
 export default mongoose.model<UserInterface>("user", userSchema);

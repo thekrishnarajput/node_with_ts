@@ -15,4 +15,7 @@ export const messages = {
     itemNotSaved: () => {
         return "Item could not be saved!";
     },
+    userNotSaved: () => {
+        return "User could not be created!";
+    },
 }

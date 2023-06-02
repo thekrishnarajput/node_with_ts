@@ -3,6 +3,7 @@ import { Document } from "mongoose";
 export interface UserInterface extends Document {
     full_name: string,
     email: string,
+    mobile_number: number,
     password: string,
     status: number,
     role: number,
@@ -15,16 +16,16 @@ export interface UserInterface extends Document {
         pincode: number,
         country: string
     },
-    orders: [{
-        order_id: string,
-        order_date: Date,
-        order_status: number,
-        order_total: number,
-        order_items: [{
-            item_id: string,
-            item_name: string,
-            item_price: number,
-            item_quantity: number
-        }]
-    }]
+    // orders: [{
+    //     order_id: string,
+    //     order_date: Date,
+    //     order_status: number,
+    //     order_total: number,
+    //     order_items: [{
+    //         item_id: string,
+    //         item_name: string,
+    //         item_price: number,
+    //         item_quantity: number
+    //     }]
+    // }]
 };
